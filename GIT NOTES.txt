@@ -1,0 +1,198 @@
+                   GLOBAL INFORMATION TRACKER
+
+
+DEVOPS LIFE CYCLE INCLUDES VARIOUS STEPS
+PLAN
+CODE
+BUILD
+TEST
+RELEASE
+DEPLOY
+OPERATE
+MONITOR 
+
+SO HERE TO MAINTAIN THE CODE WE USE THE TOOL CALLED GIT(GLOBAL INFORMATION TRACKER)
+
+IT IS A VERSION CONTROL SYSTEM(VCS) OR SOURCE CODE MANAGEMENT(SCM)
+WHICH IS NOTHING BUT IF AN APPLICATION HAVE MULTIPLE UPDATES(VERSIONS)
+
+GIT IS USED TO TRACK THE FILES
+IT WILL MAINTAIN MULTIPLE VERSIONS OF THE SAME FILE NOTHING BUT VERSIONING 
+IT IS PLATFORM INDEPENDENT
+IT IS FREE AND OPEN-SOURCE
+THEY CAN HANDLE LARGER PROJECTS EFFICIENTLY
+THEY CAN SAVE TIME AND DEVELOPERS CAN FETCH AND CREATE PULL REQUESTS WITHOUT SWITCHING
+IT IS 3RD GENERATION OF VCS
+
+VCS HISTORY
+
+SCCM(SOURCE CODE CONTROL 
+TO TRACK ONLY ONE FILE
+
+RCS(REVISION CONTROL SYSTEM)
+TRACK MULTIPLE FILES BUT NOT DIRECTORIES
+
+CVS(CONCURRENT VERSION SYSTEM)
+TRACK MULTIPLE FILES AND DIRECTORIES BUT SINGLE USER
+
+SVN(SUB VERSION 
+TRACK MULTIPLE FILES AND DIRECTORIES
+
+GIT(GLOBAL INFORMATION TRACKER)
+DISTRIBUTED VERSION CONTROL SYSTEM
+
+
+GIT STAGES:-   
+
+1)WORKING DIRECTORY IT CONTAINS PROJECT RELEATED FILES HERE NO FILES ARE TRACKED INORDER TO TRACK WE NEED ADD THE FILES TO STAGING AREA 
+
+2)STAGING AREA
+WE NEED TO COMMIT THE FILE AFTER EVERY MODIFICATION
+
+3)REPOSITORY
+IN THIS STAGE WE KEEP ALL PROJECT RELATED DATA
+
+HERE WE HAVE 2 TYPES OF REPOSITORIES 
+i)LOCAL REPO---->SOURCECODE IS AVALIABLE IN ONLY OUR SYSTEM
+ii)REMOTE REPO------> AVALIABLE TO EVERYONE EXAMPLE GITHUB
+
+
+
+Install the linux server in ec2 and use the command---------> sudo -i to go root user and install git
+
+yum install git -y (to install git)
+                                                   wd(working directory)
+git --version (to check the git version)           staging area
+                                                   repository
+
+git init . (to initiate git and here . indicates current directory)
+
+touch filename(creates file)--------->git add filename(adding file to git) ----->git commit -m "file created" filename
+(to commit file in git)
+
+git status(to check the status of file)
+
+git add *(used to track multiple files at a time)
+git commit -m "all files are commiting" . (here . represents every trackikng file)
+
+git add . (to add hidden files also)
+
+**git rm --cached filename (used to untrack a file or to send a file from staging area to working directory)
+
+git restore filename(used to get back the deleted file) 
+
+
+***we have to commit the file after every modification of file
+
+git log (to check the history of git)
+
+here we use q command to quit 
+
+git log --follow --all filename (used to check the list of commits of a particular file -----------> if we have 20 files we did multiple commits but we need the commits of a particular file we use this command)
+
+git log --follow -1 aws (to get latest commit of that particular file---->for 2 commits:- git log --follow -2 aws)
+
+
+git log -1(used to get latest commit)
+
+
+git log --oneline  (used to get commit ids and messages)
+git log --pretty=oneline(to get full commit id and messages)
+ 
+git show commitid --name-only (used to get filename)
+
+git commit --amend -m "...message....." (used to change latest commit message)here commitid also gets changes
+
+git config user.name "name"  (used to change author)
+git config user.email "...email..." (used to change email)
+
+git commit --amend --author "name <email>" (used to change author and email for the latest commit)
+save and exit---------->shift:wq!
+
+
+git add *(to add multiple files at a time)
+
+git commit -m "all files are commited" * (used to commit ,multiple files at a time
+
+git commit --amend --no-edit  (we use this to add any forgeten file to the latest commit)
+
+git reset is used to delete the commit
+git reset --hard HEAD~(no of commits)------> delets the commit along with action(file)
+git reset --soft HEAD~(no of commits) ------> delets only commit 
+
+here latest commit is called HEAD
+
+git update-ref -d HEAD (used to clear all commits)
+
+git reflog is used to check the history like what actions we deleted
+git cherry-pick HEAD@{number}  to rollback those deleted commits
+
+git revert commitid-------> this will delete the commit and create one new commit indicating we delete a commit
+
+
+
+
+
+git branch (to get the list of branchs)
+here master is the default branch
+
+git branch branchname (to create branch)
+
+git checkout branchname (to switch to particular branch)
+
+git checkout -b branchname (to create branch and checkout to branch at a time)
+
+git branch -d branchname (to delete a branch)---->we can use 'D' instead of "d" for forcefull delete
+here we cannot delete the branch which we are in to delete we need to checkout to other branch
+
+
+git branch -m oldbranchname newbranchname (to rename the branch name)
+
+
+
+scenario:-  we are in master branch and we have some files named file1 file2 then we created a another branch SRH from master that 2 files will be present in SRH also but
+   here when we create a file "file3" in SRH branch that file3 will be present in master branch also but when we commit the file3 in SRH that file gets deleted in master branch 
+
+
+git merge branchname (to get all commits from another branch) incase if we need any particular commits only we use cherry-pick command 
+
+git cherry-pick commitid commitid (to get particular commits to branch)
+
+
+--->when we have same file names in two branches merge will not work beacause of conflits in order to merge we need to clear the confilcts first 
+       so first merge the file we will get error open that file in vim editor clear the conflits and add that file to git and commit file.
+
+
+
+
+git stash
+it temporarily deletes the data in a file 
+
+
+scenario:- when we are in the master branch and created one file named as aws in this file we added data for the first time and commited and tryed to change another branch it will change but we eddited the aws file after the first commit and tryed to change the branch it wont allow us to change and asks either to commit or stash
+
+git stash (used to do the stash here when we stash a file it will temporarily deletes the changes and allow us to change branch)
+
+git stash apply (used to apply the changes in a file)
+
+git stash list (used to get slash list)
+
+git stash drop (used to delete the latest stash)
+
+git stash clear (used to delete all stashs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
